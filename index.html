@@ -1,29 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Natanael Siwalette – Portfolio</title>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Natanael Siwalette | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: Arial; max-width: 800px; margin: auto; padding: 2rem; }
-    h1 { color: #333; }
-    a { text-decoration: none; color: #007bff; }
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f5f7fa;
+      color: #333;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: #fff;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    h1, h2 {
+      color: #1a73e8;
+      margin-bottom: 1rem;
+    }
+    p {
+      margin-bottom: 1.5rem;
+    }
+    ul {
+      list-style: none;
+      padding-left: 1rem;
+    }
+    li {
+      margin-bottom: 1rem;
+    }
+    a {
+      color: #1a73e8;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #777;
+    }
   </style>
 </head>
 <body>
-  <h1>Hi, I'm Natanael Siwalette 👋</h1>
-  <p>Multimedia & Network Engineering Student from PNJ. I love building IoT systems and web-based monitoring platforms.</p>
+  <div class="container">
+    <h1>Hi, I'm Natanael Siwalette 👋</h1>
+    <p>
+      A passionate student of <strong>Multimedia & Network Engineering</strong> at Politeknik Negeri Jakarta (PNJ).
+      I specialize in <strong>IoT, Embedded Systems</strong>, and <strong>Web-Based Monitoring</strong> platforms.
+    </p>
 
-  <h2>🔧 Projects</h2>
-  <ul>
-    <li>
-      <strong>Digital Clock ESP32 & Arduino Nano</strong><br/>
-      <a href="https://github.com/natael221/JAMDIGITALPUSDATINDISHUB" target="_blank">
-        View Project on GitHub →
-      </a>
-    </li>
-  </ul>
+    <h2>💼 Projects</h2>
+    <ul>
+      <li>
+        <strong>Digital Clock ESP32 & Arduino Nano</strong><br/>
+        Real-time digital clock with temperature, humidity, and prayer time monitoring, equipped with a web interface and audio adhan player.<br/>
+        🔗 <a href="https://github.com/natanael221/JAMDIGITALPUSDATINDISHUB" target="_blank">View on GitHub</a>
+      </li>
+    </ul>
 
-  <h2>📫 Contact</h2>
-  <p>Email: <a href="mailto:natanael@example.com">natanael@example.com</a></p>
+    <h2>📫 Contact</h2>
+    <p>
+      📧 Email: <a href="mailto:natanael.siwalette@email.com">natanael.siwalette@email.com</a><br>
+      🧑‍💻 GitHub: <a href="https://github.com/natanael221" target="_blank">@natanael221</a><br>
+    </p>
+
+    <footer>
+      &copy; 2025 Natanael Siwalette — Built with 💻 and ☕
+    </footer>
+  </div>
 </body>
 </html>
