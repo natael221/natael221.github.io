@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio Pribadi - Natanael S</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  <!-- AOS CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #0d1117;
+      color: #e0e0e0;
+      line-height: 1.6;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    nav {
+      width: 100%;
+      background-color: #161b22;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+    }
+    nav .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #58a6ff;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+    nav ul li a {
+      font-weight: 600;
+      color: #c9d1d9;
+      transition: color 0.3s ease;
+    }
+    nav ul li a:hover {
+      color: #58a6ff;
+    }
+
+    header {
+      width: 100%;
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1602382241496-2c74bb31d776?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      position: relative;
+    }
+    header::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-color: rgba(13, 17, 23, 0.85);
+    }
+    header .profile-image {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 5px solid #58a6ff;
+      background-image: url('/doc/nael.jpg');
+      background-size: cover;
+      background-position: center;
+      margin-bottom: 1rem;
+      z-index: 1;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+    header h1,
+    header p,
+    header .profile-image {
+      position: relative;
+      z-index: 2;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+    }
+    header p {
+      font-size: 1.2rem;
+      color: #adbac7;
+    }
+
+    section {
+      padding: 4rem 1rem;
+    }
+    section .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #58a6ff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+      display: inline-block;
+    }
+    section h2::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 50%;
+      height: 3px;
+      background-color: #58a6ff;
+    }
+
+    #about {
+      background-color: #161b22;
+    }
+    #about .about-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    #about .about-content p {
+      margin-top: 1rem;
+      color: #c9d1d9;
+      max-width: 800px;
+    }
+
+    #projects .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .project-card {
+      background-color: #21262d;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    }
+    .project-card img {
+      width: 100%;
+      object-fit: cover;
+      height: 180px;
+    }
+    .project-card-content {
+      padding: 1rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: #c9d1d9;
+    }
+    .project-card p {
+      flex-grow: 1;
+      color: #8b949e;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+    .project-card a {
+      align-self: flex-start;
+      color: #58a6ff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+    }
+    .project-card a:hover {
+      color: #adbac7;
+    }
+
+    #skills .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 2rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+    .skill-item {
+      background-color: #21262d;
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid #30363d;
+      transition: background-color 0.3s ease;
+    }
+    .skill-item:hover {
+      background-color: #30363d;
+    }
+    .skill-item h4 {
+      color: #58a6ff;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+    .skill-item p {
+      font-size: 0.9rem;
+      color: #8b949e;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #161b22;
+      color: #8b949e;
+    }
+    footer a {
+      color: #58a6ff;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+      nav .container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+      }
+    }
+    @media (max-width: 480px) {
+      #skills .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav>
+    <div class="container">
+      <div class="logo">Natanael S</div>
+      <ul>
+        <li><a href="#about">Tentang</a></li>
+        <li><a href="#projects">Proyek</a></li>
+        <li><a href="#skills">Keahlian</a></li>
+        <li><a href="#contact">Kontak</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Header Section -->
+  <header>
+    <div class="profile-image"></div>
+    <h1>Natanael S</h1>
+    <p>IoT & Web Monitoring Developer | Mahasiswa Teknik Multimedia & Jaringan PNJ</p>
+  </header>
+
+  <!-- About Me Section -->
+  <section id="about">
+    <div class="container" data-aos="fade-up">
+      <h2>Tentang Saya</h2>
+      <div class="about-content">
+        <p>
+          Saya adalah mahasiswa Teknik Multimedia dan Jaringan di Politeknik Negeri Jakarta yang memiliki ketertarikan tinggi pada pengembangan Internet of Things (IoT), monitoring web, serta teknologi jaringan. Berpengalaman dalam membangun solusi monitoring real-time dan sistem otomatisasi berbasis mikrokontroler, baik untuk kebutuhan akademis maupun industri.
+        </p>
+        <p>
+          Saya aktif mengembangkan berbagai proyek mandiri dan kolaborasi yang melibatkan sensor, perangkat IoT, hingga dashboard visualisasi berbasis web. Saya selalu antusias mempelajari teknologi baru dan berinovasi untuk menciptakan solusi yang bermanfaat di bidang teknologi informasi.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <div class="container">
+      <h2 data-aos="fade-up">Proyek Pilihan</h2>
+      <div class="projects-grid">
+        <div class="project-card" data-aos="fade-up">
+          <img src="/doc/device-display.jpeg" alt="JAMDIGITALPUSDATINDISHUB" />
+          <div class="project-card-content">
+            <h3>JAMDIGITALPUSDATINDISHUB</h3>
+            <p>
+              Proyek magang di Dinas Perhubungan DKI Jakarta (PUSDATIN). Jam digital real-time berbasis ESP32 & Arduino Nano dengan web interface dan audio adzan otomatis.
+            </p>
+            <a href="https://github.com/natael221/JAMDIGITALPUSDATINDISHUB" target="_blank">View on GitHub</a>
+          </div>
+        </div>
+        <div class="project-card" data-aos="fade-up">
+          <img src="/doc/heart.png" alt="heart-rate-monitor" />
+          <div class="project-card-content">
+            <h3>heart-rate-monitor</h3>
+            <p>
+              Visualisasi detak jantung secara real-time untuk tugas Wireless Sensor Network, menggunakan JavaScript dan DOM dasar.
+            </p>
+            <a href="https://github.com/natael221/heart-rate-monitor" target="_blank">View on GitHub</a>
+          </div>
+        </div>
+        <div class="project-card" data-aos="fade-up">
+          <img src="/doc/module.png" alt="Website-Find-Your-Module" />
+          <div class="project-card-content">
+            <h3>Website-Find-Your-Module</h3>
+            <p>
+              Tools berbasis HTML untuk membantu user menemukan penempatan modul untuk tujuan pembelajaran dengan cepat.
+            </p>
+            <a href="https://github.com/natael221/Website-Find-Your-Module" target="_blank">View on GitHub</a>
+          </div>
+        </div>
+        <div class="project-card" data-aos="fade-up">
+          <img src="https://raw.githubusercontent.com/natael221/server-env-monitor-iot/main/docs/Hardware.png" alt="server-env-monitor-iot" />
+          <div class="project-card-content">
+            <h3>server-env-monitor-iot</h3>
+            <p>
+              Sistem monitoring lingkungan untuk ruang server berbasis sensor IoT dan dashboard web real-time.
+            </p>
+            <a href="https://github.com/natael221/server-env-monitor-iot" target="_blank">View on GitHub</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <div class="container" data-aos="fade-up">
+      <h2>Keahlian</h2>
+      <div class="skills-grid">
+        <div class="skill-item" data-aos="fade-up">
+          <h4>HTML & CSS</h4>
+          <p>Berpengalaman</p>
+        </div>
+        <div class="skill-item" data-aos="fade-up">
+          <h4>JavaScript</h4>
+          <p>Menengah</p>
+        </div>
+        <div class="skill-item" data-aos="fade-up">
+          <h4>C/C++</h4>
+          <p>Menengah</p>
+        </div>
+        <div class="skill-item" data-aos="fade-up">
+          <h4>IoT Development</h4>
+          <p>Berpengalaman</p>
+        </div>
+        <div class="skill-item" data-aos="fade-up">
+          <h4>Web Monitoring</h4>
+          <p>Menengah</p>
+        </div>
+        <div class="skill-item" data-aos="fade-up">
+          <h4>Network Engineering</h4>
+          <p>Familiar</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container" data-aos="fade-up">
+      <h2>Kontak</h2>
+      <div class="contact-links-horizontal" style="max-width:700px;margin:0 auto;margin-top:2rem;display:flex;flex-wrap:wrap;justify-content:center;gap:2.2rem;align-items:center;color:#c9d1d9;">
+        <a href="https://github.com/natael221" target="_blank" title="GitHub" style="color:#58a6ff;font-weight:600;display:flex;align-items:center;gap:0.5rem;font-size:1.07rem;background:none;border-radius:6px;padding:0.3rem 0.7rem;transition:background 0.2s, color 0.2s;">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="22" height="22" alt="Github" style="filter:invert(0.7);vertical-align:middle;">
+          <span>@natael221</span>
+        </a>
+        <a href="mailto:natanael.siwalette@gmail.com" target="_blank" title="Email" style="color:#58a6ff;font-weight:600;display:flex;align-items:center;gap:0.5rem;font-size:1.07rem;background:none;border-radius:6px;padding:0.3rem 0.7rem;transition:background 0.2s, color 0.2s;">
+          <svg width="22" height="22" fill="none" stroke="#58a6ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg>
+          <span>natanael.siwalette@gmail.com</span>
+        </a>
+        <a href="https://www.instagram.com/nataels_/" target="_blank" title="Instagram" style="color:#58a6ff;font-weight:600;display:flex;align-items:center;gap:0.5rem;font-size:1.07rem;background:none;border-radius:6px;padding:0.3rem 0.7rem;transition:background 0.2s, color 0.2s;">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/instagram.svg" width="22" height="22" alt="Instagram" style="filter: invert(36%) sepia(97%) saturate(2496%) hue-rotate(315deg) brightness(95%) contrast(88%);vertical-align:middle;">
+          <span>@nataels_</span>
+        </a>
+        <a href="https://linkedin.com/in/natanaelsiwalette/" target="_blank" title="LinkedIn" style="color:#58a6ff;font-weight:600;display:flex;align-items:center;gap:0.5rem;font-size:1.07rem;background:none;border-radius:6px;padding:0.3rem 0.7rem;transition:background 0.2s, color 0.2s;">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/linkedin.svg" width="22" height="22" alt="LinkedIn" style="filter: invert(32%) sepia(74%) saturate(2182%) hue-rotate(182deg) brightness(98%) contrast(101%);vertical-align:middle;">
+          <span>natanaelsiwalette</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Natanael S. All rights reserved.</p>
+    <p>Built with <a href="https://github.com/natael221/natael221.github.io" target="_blank">HTML5, CSS3 &amp; JavaScript</a></p>
+  </footer>
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      offset: 150,
+    });
+  </script>
+</body>
+</html>
