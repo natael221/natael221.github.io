@@ -81,7 +81,7 @@
       height: 160px;
       border-radius: 50%;
       border: 5px solid #58a6ff;
-      background-image: url('/doc/nael.JPG');
+      background-image: url('/doc/nael.jpg');
       background-size: cover;
       background-position: center;
       margin-bottom: 1rem;
@@ -275,6 +275,8 @@
       position: relative;
       cursor: pointer;
       outline: none;
+      width: 120px;
+      height: 120px;
     }
     .skill-item:hover {
       background-color: #30363d;
@@ -504,7 +506,126 @@
     </div>
   </section>
 
+  <!-- Experience Section -->
+  <section id="experience">
+    <div class="container" data-aos="fade-up">
+      <h2>Pengalaman</h2>
+      <div class="experience-timeline">
+        <div class="experience-item">
+          <div class="exp-header">
+            <span class="exp-title">Customer Care - PKL</span>
+            <span class="exp-place">PT Telekomunikasi Indonesia (Telkom), Witel Bogor - Bogor, Indonesia</span>
+            <span class="exp-date">Jul 2019 - Sep 2019</span>
+          </div>
+          <div class="exp-desc">
+            - Melakukan verifikasi dan konfirmasi data pelanggan perusahaan.<br>
+            - Berpartisipasi dalam program PKL dari sekolah.<br>
+            - Telkom adalah penyedia layanan telekomunikasi terkemuka di Indonesia.
+          </div>
+        </div>
+        <div class="experience-item">
+          <div class="exp-header">
+            <span class="exp-title">IT Support - Magang</span>
+            <span class="exp-place">Dinas Perhubungan - Pusat Data dan Informasi - Jakarta, Indonesia</span>
+            <span class="exp-date">Nov 2024 - Jan 2025</span>
+          </div>
+          <div class="exp-desc">
+            - Mendukung pengolahan dan pendataan informasi transportasi.<br>
+            - Troubleshooting jaringan, perangkat komputer, dan printer.<br>
+            - Membantu pemeliharaan sistem IT internal.<br>
+            - Mengerjakan proyek perangkat jam digital sebagai eksplorasi sistem embedded.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
   <!-- Projects Section -->
+  <style>
+    .experience-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 2.2rem;
+      margin-top: 2.5rem;
+      position: relative;
+    }
+    .experience-timeline::before {
+      content: '';
+      position: absolute;
+      left: 18px;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, #58a6ff 0%, #adbac7 100%);
+      opacity: 0.18;
+      z-index: 0;
+    }
+    .experience-item {
+      position: relative;
+      padding-left: 48px;
+      z-index: 1;
+    }
+    .experience-item::before {
+      content: '';
+      position: absolute;
+      left: 10px;
+      top: 12px;
+      width: 18px;
+      height: 18px;
+      background: #58a6ff;
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px #58a6ff22;
+      border: 3px solid #0d1117;
+      z-index: 2;
+    }
+    .exp-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.1rem 1.7rem;
+      margin-bottom: 0.5rem;
+    }
+    .exp-title {
+      font-size: 1.13rem;
+      font-weight: 700;
+      color: #58a6ff;
+    }
+    .exp-place {
+      font-size: 1.05rem;
+      color: #adbac7;
+      font-weight: 600;
+    }
+    .exp-date {
+      font-size: 0.98rem;
+      color: #8b949e;
+      font-style: italic;
+    }
+    .exp-desc {
+      font-size: 1.01rem;
+      color: #c9d1d9;
+      margin-left: 0.1rem;
+      margin-top: 0.2rem;
+      line-height: 1.7;
+    }
+    @media (max-width: 600px) {
+      .experience-timeline {
+        gap: 1.3rem;
+        margin-top: 1.2rem;
+      }
+      .experience-item {
+        padding-left: 32px;
+      }
+      .experience-item::before {
+        left: 0px;
+        width: 14px;
+        height: 14px;
+      }
+      .exp-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3rem;
+      }
+    }
+  </style>
   <section id="projects">
     <div class="container">
       <h2 data-aos="fade-up">Proyek Pilihan</h2>
@@ -555,36 +676,32 @@
 
   <!-- Skills Section -->
   <section id="skills">
-    <div class="container" data-aos="fade-up">
-      <h2>Keahlian</h2>
-      <div class="skills-grid">
-        <div class="skill-item" data-aos="fade-up">
-          <h4>HTML & CSS</h4>
-          <p>Berpengalaman</p>
-        </div>
-        <div class="skill-item" data-aos="fade-up">
-          <h4>JavaScript</h4>
-          <p>Menengah</p>
-        </div>
-        <div class="skill-item" data-aos="fade-up">
-          <h4>C/C++</h4>
-          <p>Menengah</p>
-        </div>
-        <div class="skill-item" data-aos="fade-up">
-          <h4>IoT Development</h4>
-          <p>Berpengalaman</p>
-        </div>
-        <div class="skill-item" data-aos="fade-up">
-          <h4>Web Monitoring</h4>
-          <p>Menengah</p>
-        </div>
-        <div class="skill-item" data-aos="fade-up">
-          <h4>Network Engineering</h4>
-          <p>Familiar</p>
+      <div class="container" data-aos="fade-up">
+        <h2>Keahlian</h2>
+        <div class="skills-grid" style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center;">
+          <div class="skill-item" style="background-color: #21262d; padding: 1rem; border-radius: 8px; display: flex; flex-direction: column; align-items: center;">
+            <img src="https://images.icon-icons.com/2699/PNG/512/arduino_logo_icon_170518.png" alt="Arduino" width="48" height="48">
+            <span style="margin-top: 0.5rem; color: #c9d1d9; font-size: 0.9rem;">IoT</span>
+          </div>
+          <div class="skill-item" style="background-color: #21262d; padding: 1rem; border-radius: 8px; display: flex; flex-direction: column; align-items: center;">
+            <img src="https://1000logos.net/wp-content/uploads/2016/11/Cisco-logo.png" alt="Cisco" width="75" height="42">
+            <span style="margin-top: 0.8rem; color: #c9d1d9; font-size: 0.9rem;">Networking</span>
+          </div>
+          <div class="skill-item" style="background-color: #21262d; padding: 1rem; border-radius: 8px; display: flex; flex-direction: column; align-items: center;">
+            <img src="https://icons.iconarchive.com/icons/cornmanthe3rd/plex/512/Other-html-5-icon.png" alt="HTML5" width="48" height="48">
+            <span style="margin-top: 0.5rem; color: #c9d1d9; font-size: 0.9rem;">Web</span>
+          </div>
+          <div class="skill-item" style="background-color: #21262d; padding: 1rem; border-radius: 8px; display: flex; flex-direction: column; align-items: center;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python" width="48" height="48">
+            <span style="margin-top: 0.5rem; color: #c9d1d9; font-size: 0.9rem;">Python</span>
+          </div>
+          <div class="skill-item" style="background-color: #21262d; padding: 1rem; border-radius: 8px; display: flex; flex-direction: column; align-items: center;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/C_Programming_Language.svg" alt="C++" width="48" height="48">
+            <span style="margin-top: 0.5rem; color: #c9d1d9; font-size: 0.9rem;">C++</span>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
   <!-- Contact Section -->
   <section id="contact">
