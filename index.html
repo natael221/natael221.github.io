@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
+    <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Natanael Siwalette</title>
+  <title>Portfolio Pribadi - Natanael S</title>
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' stroke='white' stroke-width='8' fill='none'/></svg>">
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
   <!-- AOS CSS -->
@@ -25,25 +27,69 @@
 
     nav {
       width: 100%;
-      background-color: #161b22;
+      background-color: rgba(13, 17, 23, 0.8);
+      backdrop-filter: blur(10px);
       position: fixed;
       top: 0;
       left: 0;
       z-index: 1000;
-      backdrop-filter: blur(10px);
+      height: 60px;
+      border-bottom: 1px solid rgba(88, 166, 255, 0.1);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     }
     nav .container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 1rem 1rem;
+      padding: 0 1.5rem;
+      height: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
     nav .logo {
+      background: linear-gradient(45deg, #58a6ff, #a2d2ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      position: relative;
+    }
+    .nav-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+    }
+    nav .logo {
       font-size: 1.5rem;
       font-weight: 800;
       color: #58a6ff;
+    }
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 21px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      z-index: 10;
+      margin-right: 10px; /* Geser ke kiri */
+    }
+    .menu-toggle span {
+      width: 100%;
+      height: 3px;
+      background-color: #58a6ff;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+    @media (max-width: 768px) {
+      .nav-header {
+        padding-right: 10px; /* Tambah padding kanan */
+      }
     }
     nav ul {
       list-style: none;
@@ -54,21 +100,76 @@
       font-weight: 600;
       color: #c9d1d9;
       transition: color 0.3s ease;
+      text-decoration: none;
     }
     nav ul li a:hover {
       color: #58a6ff;
     }
 
+    @media (max-width: 768px) {
+      nav .container {
+        padding: 0 1rem;
+      }
+      .menu-toggle {
+        display: flex;
+      }
+      nav ul {
+        display: none;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: #0d1117;
+        flex-direction: column;
+        gap: 0;
+        padding: 1rem 0;
+        border-top: 1px solid #30363d;
+      }
+      nav ul.active {
+        display: flex;
+      }
+      nav ul li {
+        width: 100%;
+      }
+      nav ul li a {
+        display: block;
+        padding: 1rem;
+        text-align: left;
+        padding-left: 1rem;
+      }
+      nav ul li a:hover {
+        background-color: #58a6ff22;
+      }
+      header {
+        padding-top: 60px; /* Add spacing for fixed navbar */
+      }
+    }
+
     header {
       width: 100%;
       height: 100vh;
-      background: url('https://images.unsplash.com/photo-1602382241496-2c74bb31d776?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
+      background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
       text-align: center;
       position: relative;
+      overflow: hidden;
+    }
+    
+    header::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(88, 166, 255, 0.1) 0%, transparent 50%);
+      animation: rotate 30s linear infinite;
+    }
+    
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
     header::after {
       content: '';
@@ -105,10 +206,14 @@
       font-size: 2.5rem;
       color: #ffffff;
       margin-bottom: 0.5rem;
+      padding: 0 1rem;
     }
     header p {
       font-size: 1.2rem;
       color: #adbac7;
+      padding: 0 2rem;
+      max-width: 800px;
+      margin: 0 auto;
     }
     .profile-greeting {
       position: absolute;
@@ -188,24 +293,52 @@
       gap: 2rem;
     }
     .project-card {
-      background-color: #21262d;
-      border: 1px solid #30363d;
-      border-radius: 8px;
+      background: linear-gradient(145deg, #1a1f26, #21262d);
+      border: 1px solid rgba(88, 166, 255, 0.1);
+      border-radius: 16px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      transition: transform 0.35s cubic-bezier(.4,2,.6,1), box-shadow 0.35s, filter 0.35s;
-      will-change: transform, box-shadow, filter;
+      transition: all 0.4s ease;
       position: relative;
       cursor: pointer;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      transform-origin: center;
       outline: none;
     }
     .project-card:hover {
-      transform: scale(1.10) translateY(-12px);
-      box-shadow: 0 28px 60px 0 rgba(88,166,255,0.19), 0 12px 32px rgba(0,0,0,0.55);
-      filter: brightness(1.07) saturate(1.15);
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(88, 166, 255, 0.2);
+      border-color: #58a6ff;
       z-index: 2;
-      transition-delay: 0s;
+    }
+    
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        135deg,
+        rgba(88, 166, 255, 0.2) 0%,
+        transparent 100%
+      );
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    
+    .project-card:hover::before {
+      opacity: 1;
+    }
+    
+    .project-card img {
+      transition: transform 0.5s ease;
+    }
+    
+    .project-card:hover img {
+      transform: scale(1.05);
     }
     .project-card:focus {
       transform: scale(1.10) translateY(-12px);
@@ -435,18 +568,40 @@
     <rect width="1920" height="1080" fill="url(#smallGrid)"/>
     <rect width="1920" height="1080" fill="url(#dotGrid)"/>
   </svg>
-    @media (max-width: 480px) {
-      #skills .skills-grid {
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-      }
-    }
-  </style>
-  <!-- Accessibility: make .project-card and .skill-item focusable by keyboard -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       document.querySelectorAll('.project-card, .skill-item').forEach(function(el) {
         el.setAttribute('tabindex', '0');
       });
+    });
+
+    function toggleMenu() {
+      const menu = document.getElementById('nav-menu');
+      menu.classList.toggle('active');
+    }
+
+    function closeMenu() {
+      const menu = document.getElementById('nav-menu');
+      menu.classList.remove('active');
+    }
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+      const menu = document.getElementById('nav-menu');
+      const toggle = document.querySelector('.menu-toggle');
+      if (!menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('active')) {
+        closeMenu();
+      }
+    });
+
+    // Hide menu on scroll
+    let lastScroll = 0;
+    window.addEventListener('scroll', function() {
+      const currentScroll = window.pageYOffset;
+      if (currentScroll > lastScroll) {
+        closeMenu();
+      }
+      lastScroll = currentScroll;
     });
   </script>
 </head>
@@ -459,13 +614,20 @@
   <!-- Navbar -->
   <nav>
     <div class="container">
-      <div class="logo">Natanael S</div>
-      <ul>
-        <li><a href="#about">Tentang</a></li>
-        <li><a href="#experience">Pengalaman</a></li>
-        <li><a href="#projects">Proyek</a></li>
-        <li><a href="#skills">Keahlian</a></li>
-        <li><a href="#contact">Kontak</a></li>
+      <div class="nav-header">
+        <div class="logo">Natanael S</div>
+        <button class="menu-toggle" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <ul id="nav-menu">
+        <li><a href="#about" onclick="closeMenu()">Tentang</a></li>
+        <li><a href="#experience" onclick="closeMenu()">Pengalaman</a></li>
+        <li><a href="#projects" onclick="closeMenu()">Proyek</a></li>
+        <li><a href="#skills" onclick="closeMenu()">Keahlian</a></li>
+        <li><a href="#contact" onclick="closeMenu()">Kontak</a></li>
       </ul>
     </div>
   </nav>
@@ -488,8 +650,8 @@
       <div class="profile-image"></div>
       <div class="profile-greeting" id="profile-greeting">Haloo!!!</div>
     </div>
-    <h1>Natanael S</h1>
-    <p>IoT & Web Monitoring Developer | Mahasiswa Teknik Multimedia & Jaringan PNJ</p>
+    <h1>Natanael Siwalette</h1>
+    <p>IoT & Computer Network | Mahasiswa Teknik Multimedia & Jaringan PNJ</p>
   </header>
 
   <!-- About Me Section -->
@@ -632,7 +794,7 @@
       <h2 data-aos="fade-up">Proyek Pilihan</h2>
       <div class="projects-grid">
         <div class="project-card" data-aos="fade-up">
-          <img src="/doc/device-display.jpeg" alt="JAMDIGITALPUSDATINDISHUB" />
+          <img src="https://github.com/natael221/JAMDIGITALPUSDATINDISHUB/blob/main/doc/device-display.jpeg?raw=true" alt="JAMDIGITALPUSDATINDISHUB" />
           <div class="project-card-content">
             <h3>JAMDIGITALPUSDATINDISHUB</h3>
             <p>
@@ -642,7 +804,7 @@
           </div>
         </div>
         <div class="project-card" data-aos="fade-up">
-          <img src="/doc/heart.png" alt="heart-rate-monitor" />
+          <img src="https://github.com/natael221/heart-rate-monitor/blob/main/app-assets/ssdemo.png?raw=true" alt="heart-rate-monitor" />
           <div class="project-card-content">
             <h3>heart-rate-monitor</h3>
             <p>
@@ -652,7 +814,7 @@
           </div>
         </div>
         <div class="project-card" data-aos="fade-up">
-          <img src="/doc/module.png" alt="Website-Find-Your-Module" />
+          <img src="https://github.com/natael221/Website-Find-Your-Module/blob/main/Img/landing.png?raw=true" alt="Website-Find-Your-Module" />
           <div class="project-card-content">
             <h3>Website-Find-Your-Module</h3>
             <p>
@@ -669,6 +831,19 @@
               Sistem monitoring lingkungan untuk ruang server berbasis sensor IoT dan dashboard web real-time.
             </p>
             <a href="https://github.com/natael221/server-env-monitor-iot" target="_blank">View on GitHub</a>
+          </div>
+        </div>
+
+        <div class="project-card" data-aos="fade-up">
+          <img src="https://raw.githubusercontent.com/natael221/flood-monitoring-iot/main/docs/device.jpg" alt="flood-monitoring-iot" />
+          <div class="project-card-content">
+            <h3>flood-monitoring-iot</h3>
+            <p>
+              Sistem monitoring banjir berbasis IoT menggunakan ESP32 dan sensor ultrasonik dengan visualisasi data real-time pada dashboard web.
+            </p>
+            <a href="https://github.com/natael221/flood-monitoring-iot" target="_blank">View on GitHub</a>
+          </div>
+        </div>
           </div>
         </div>
       </div>
