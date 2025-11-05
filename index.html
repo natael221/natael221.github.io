@@ -960,7 +960,7 @@
         <div class="container hero-content">
             <span class="hero-subtitle">Hello, I'm</span>
             <h1 class="hero-title">Natanael Siwalette</h1>
-            <p class="hero-subtitle">A Regular Developer building practical solutions with Technology</p>
+            <p class="hero-subtitle">A Regular Developer building practical solutions with IoT and technology</p>
             <div class="hero-image">
                 <div class="hero-image-inner"></div>
             </div>
@@ -1205,7 +1205,9 @@
             const navToggle = document.querySelector('.nav-toggle');
             const navLinks = document.querySelectorAll('.nav-link');
             const sections = document.querySelectorAll('section[id]');
-            const navOffset = 100; // Offset untuk scroll
+            // const navOffset = document.querySelector('.navbar').offsetHeight + 40;
+            const getNavOffset = () => document.querySelector('.navbar').offsetHeight + 60;
+
 
             // Toggle menu
             navToggle.addEventListener('click', (e) => {
@@ -1229,25 +1231,27 @@
 
             // Smooth scroll dengan offset
             navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    
-                    if (targetElement) {
-                        const offsetTop = targetElement.offsetTop - navOffset;
-                        
-                        // Scroll ke target
-                        window.scrollTo({
-                            top: offsetTop,
-                            behavior: 'smooth'
-                        });
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href');
+    const targetElement = document.querySelector(targetId);
 
-                        // Tunggu sebentar sebelum menutup menu
-                        setTimeout(closeMenu, 100);
-                    }
-                });
-            });
+    if (targetElement) {
+      // Ambil posisi elemen relatif terhadap viewport + scroll saat ini
+      const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+      // Tambahkan offset dinamis (navbar height + koreksi tambahan)
+      const offset = (navbar ? navbar.offsetHeight : 0) - 120;
+
+      window.scrollTo({
+        top: elementPosition - offset,
+        behavior: 'smooth'
+      });
+
+      setTimeout(closeMenu, 100);
+    }
+  });
+});
+
 
             // Update active link saat scroll
             function updateActiveLink() {
@@ -1273,8 +1277,8 @@
             });
 
             // Update active link saat halaman dimuat
-            updateActiveLink();
+            updateActiveLink();s
         });
     </script>
-</body>
+</body>s
 </html>
