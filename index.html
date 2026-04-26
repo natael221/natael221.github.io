@@ -732,14 +732,18 @@
             });
         });
     </script>
-    <script>
+<script>
     if (window.location.search.includes('halo')) {
+        const secretData = [104, 97, 108, 111, 32, 122, 97, 104, 114, 97, 32, 128, 152, 156];
+        
+        let message = String.fromCharCode(104, 97, 108, 111, 32, 122, 97, 104, 114, 97) + " 😜";
+
         document.body.innerHTML = `
-            <div style="background:#000; color:#fff; height:100vh; display:flex; justify-content:center; align-items:center; font-family:sans-serif; margin:0;">
-                <h1 style="font-weight:400; letter-spacing:2px;">halo zahra😜</h1>
+            <div style="background:#000; color:#fff; height:100vh; width:100vw; display:flex; justify-content:center; align-items:center; font-family:sans-serif; margin:0; position:fixed; top:0; left:0; z-index:99999;">
+                <h1 style="font-weight:400; letter-spacing:2px; text-align:center;">${message}</h1>
             </div>
         `;
-        document.body.style.background = '#000';
+        document.body.style.overflow = 'hidden';
     }
 </script>
 </body>
